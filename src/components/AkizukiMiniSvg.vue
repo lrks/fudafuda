@@ -255,9 +255,6 @@ export default {
       const t = normalizeBarcode(this.barcode).substring(12, 16);
       return (t && t.length == 4) ? t : 'Unknown';
     },
-    segpayload: function() {
-      return segments2payload(this.segments);
-    },
   },
   methods: {
     toggle: function(seg){

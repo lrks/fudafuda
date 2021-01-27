@@ -5,8 +5,9 @@
         <span class="text-xl">fudafuda</span>
       </a>
       <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-      <router-link to="/">Home</router-link>
-      <router-link to="/akizukimini">AkizukiMini</router-link>
+        <router-link to="/">Home</router-link>
+        <router-link to="/akizukimini">AkizukiMini</router-link>
+        <router-link to="/akizukibig">AkizukiBig</router-link>
       </nav>
     </div>
   </header>
