@@ -175,12 +175,13 @@ function generateCode(vram) {
 
 
 export default {
+  emits: [ 'changed' ],
   props: {
     initCode: String,
   },
   data(){
     return {
-      vram: payload2vram(this.initCode),
+      vram: payload2vram(this.initCode || ''),
     }
   },
   mounted: function() {

@@ -208,15 +208,21 @@ function generateCode(plid, segments) {
   return cmd.toUpperCase();
 }
 
+function normalizeCode(code) {
+  if (!code) return '';
+  return code.replace(/[^0-9a-fA-F]/g, '0');
+}
+
 
 export default {
+  emits: [ 'changed' ],
   props: {
     initCode: String,
   },
   data(){
     return {
-      segments: payload2segments(this.initCode.substring(12, 118)),
-      plid: ('0'.repeat(8) + this.initCode.substring(2, 10)).slice(-8),
+      segments: payload2segments(normalizeCode(this.initCode.substring(12, 118))),
+      plid: ('0'.repeat(8) + normalizeCode(this.initCode.substring(2, 10))).slice(-8),
       barcode: '',
     }
   },
