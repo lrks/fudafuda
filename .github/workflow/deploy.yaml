@@ -1,0 +1,24 @@
+name: gh-pages-deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test
+      - uses: peaceiris/actions-gh-pages@v3
+        if: contains(github.event_name, 'push')
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
