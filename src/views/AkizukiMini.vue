@@ -30,7 +30,6 @@ export default {
   methods: {
     saveCode(payload) {
       this.payload = {type: 'AkizukiMini', code: payload['code']};
-      location.hash = payload['code'];
     },
   }
 }

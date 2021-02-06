@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-node@v2
       - run: npm ci
       - run: npm run build
+      - run: cp docs/index.html docs/404.html
       - run: npm run test
       - uses: peaceiris/actions-gh-pages@v3
         if: contains(github.event_name, 'push')
