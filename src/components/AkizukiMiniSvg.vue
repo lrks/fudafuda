@@ -158,13 +158,8 @@ function payload2segments(payload) {
 }
 
 function segments2payload(segments) {
-  let hex = '000000';
-  for (let i=0; i<segments.length/8; i++) {
-    const bits = segments.slice(8*i, 8*(i+1));
-    const num = bits.reverse().reduce(function(acc, val, idx) { return acc + (val ? 1 : 0) * (2 ** idx); });
-    hex += num.toString(16);
-  }
-  return ('0'.repeat(52) + hex.substring(0, 52)).slice(-52);
+  const data = BigInt('0b'+segments.map((x) => x ? '1' : '0').join(''));
+  return ('0'.repeat(46) + data.toString(16).substring(0, 46)).slice(-46);
 }
 
 function normalizeBarcode(barcode) {
@@ -187,7 +182,8 @@ function barcode2plid(barcode) {
 }
 
 function generateCode(plid, segments) {
-  let cmd = '84' + plid + '37' + segments2payload(segments);
+  const page = '00';
+  let cmd = '84' + plid + '37' + page + '0000' + segments2payload(segments);
 
   // 84 2C 14 EB E4 37 00 00 00 F0 E5 2E FA E1 2B BF F8 8F FF B8 CB 2F FE E3 3F EE F2 8B FF F8 8F BB [30 44] <- CRC
   let crc = 0x8408;
