@@ -3,16 +3,16 @@ import Home from '../views/Home.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/fudafuda/',
     name: 'Home',
     component: Home
   },
   {
-    path: '/akizukimini',
+    path: '/fudafuda/akizukimini',
     component: () => import(/* webpackChunkName: "akizukimini" */ '../views/AkizukiMini.vue')
   },
   {
-    path: '/akizukibig',
+    path: '/fudafuda/akizukibig',
     component: () => import(/* webpackChunkName: "akizukibig" */ '../views/AkizukiBig.vue')
   },
 ]
